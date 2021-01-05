@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ImageGrid.css";
+import "./ImageGrid.scss";
 import "./ImageCard";
 import { connect } from "react-redux";
 import ImageCard from "./ImageCard";
