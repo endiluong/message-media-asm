@@ -1,0 +1,16 @@
+.header-box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+   padding: 1rem 0;
+   position: sticky;
+   top: 0;
+   background: #f5f5f5;
+   z-index: 10;
+}
+
+.header-box h1 {
+   color: #424242 !important;
+   font-family: 'Pacifico', cursive !important;
+}
