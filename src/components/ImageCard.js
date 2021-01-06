@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { GIPHY_IMAGE_WEBP, GIPHY_IMAGE_JPG } from "../constant";
+import LightBox from "./LightBox";
+
 import "./ImageCard.scss";
 
 const ImageCard = (props) => {
+  const [isOpenLightBox, setOpenLightBox] = useState(false);
+
   const renderer = () => {
-    const { title, images, user } = props.image;
+    const { image } = props;
+    const { title, images, user } = image;
     return (
       <div className="col-6 col-md-4 col-lg-3">
         <section className="card">
           <div className="card-wrapper">
-            <picture className="card-image">
+            <picture
+              className="card-image"
+              onClick={() => setOpenLightBox(true)}
+            >
               <source srcSet={images[GIPHY_IMAGE_WEBP].url} type="image/webp" />
               <source srcSet={images[GIPHY_IMAGE_JPG].url} type="image/jpeg" />
               <img src={images[GIPHY_IMAGE_JPG].url} alt={title} />
@@ -39,11 +47,13 @@ const ImageCard = (props) => {
               <span className="card-user__name">{user.username}</span>
             </div>
           ) : null}
-          {/* <LightBox
-            isOpen={this.state.isOpenLightBox}
-            onClose={this.closeLightBox}
-            {...this.props}
-          /> */}
+          <LightBox
+            isOpen={isOpenLightBox}
+            onClose={() => {
+              setOpenLightBox(false);
+            }}
+            {...image}
+          />
         </section>
       </div>
     );
