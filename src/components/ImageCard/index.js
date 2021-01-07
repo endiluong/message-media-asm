@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { GIPHY_IMAGE_WEBP, GIPHY_IMAGE_JPG } from "../constant";
-import LightBox from "./LightBox";
+import { GIPHY_IMAGE_WEBP, GIPHY_IMAGE_JPG } from "../../constant";
+import LightBox from "../LightBox";
 
-import "./ImageCard.scss";
+import "./style.scss";
 
 const ImageCard = (props) => {
   const [isOpenLightBox, setOpenLightBox] = useState(false);

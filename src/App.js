@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { Provider } from "react-redux";
 import Header from "./components/Header";
 import ImageGrid from "./components/ImageGrid";
 import configureStore from "./store";
-import "./App.scss";
+import "./style.scss";
 import "./assets/scss/main.scss";
 
 const store = configureStore();
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
+const App = () => {
+  const renderer = () => {
     return (
       <Provider store={store}>
         <div className="app">
@@ -22,7 +18,8 @@ class App extends Component {
         </div>
       </Provider>
     );
-  }
-}
+  };
+  return renderer();
+};
 
 export default App;

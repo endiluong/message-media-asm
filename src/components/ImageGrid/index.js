@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import "./ImageGrid.scss";
-import "./ImageCard";
 import { connect } from "react-redux";
-import ImageCard from "./ImageCard";
-import { loadImages } from "../actions";
+import ImageCard from "../ImageCard";
+import { loadImages } from "../../actions";
 import debounce from "lodash/debounce";
+import "./style.scss";
 
 const ImageGrid = (props) => {
   const [page, setPage] = useState(null);
