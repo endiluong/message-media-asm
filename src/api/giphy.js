@@ -19,6 +19,7 @@ const fetchImages = async (offset) => {
       offset,
     },
   });
+
   if (response.status >= 400) {
     throw new Error(response.errors);
   }

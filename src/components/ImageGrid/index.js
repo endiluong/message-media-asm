@@ -1,24 +1,29 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ImageCard from "../ImageCard";
 import { loadImages } from "../../actions";
 import debounce from "lodash/debounce";
 import "./style.scss";
 
-const ImageGrid = (props) => {
+const ImageGrid = () => {
   const [page, setPage] = useState(null);
-  const { isLoading, images, error } = props;
+  const [isNextPage, setNextPage] = useState(false);
+
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.isLoading);
+
+  const images = useSelector((state) => state.images);
+  const error = useSelector((state) => state.error);
+
+  useEffect(() => {
+    dispatch(loadImages());
+  }, [dispatch, isNextPage]);
 
   const handleScrollDown = () => {
     const { scrollHeight, scrollTop, clientHeight } = page;
     if (clientHeight + scrollTop === scrollHeight) {
-      handlePagination();
-    }
-  };
-
-  const handlePagination = () => {
-    const { loadImages } = props;
-    loadImages();
+      setNextPage(true);
+    } else setNextPage(false);
   };
 
   const renderImageToImageCard = () => {
@@ -70,14 +75,4 @@ const ImageGrid = (props) => {
   return renderer();
 };
 
-const mapStateToProps = ({ isLoading, images, error }) => ({
-  isLoading,
-  images,
-  error,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadImages: () => dispatch(loadImages()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ImageGrid);
+export default ImageGrid;
