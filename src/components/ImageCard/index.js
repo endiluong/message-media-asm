@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { GIPHY_IMAGE_WEBP, GIPHY_IMAGE_JPG } from "../../constant";
 import LightBox from "../LightBox";
 
@@ -39,14 +39,12 @@ const ImageCard = (props) => {
               </div>
             </div>
           </div>
-          {user ? (
-            <div className="card-user">
-              <span className="card-user__avatar">
-                <img src={user.avatar_url} alt={user.display_name} />
-              </span>
-              <span className="card-user__name">{user.username}</span>
-            </div>
-          ) : null}
+          <div className="card-user">
+            <span className="card-user__avatar">
+              <img src={user?.avatar_url} alt={user?.display_name} />
+            </span>
+            <span className="card-user__name">{user?.username}</span>
+          </div>
           <LightBox
             isOpen={isOpenLightBox}
             onClose={() => {

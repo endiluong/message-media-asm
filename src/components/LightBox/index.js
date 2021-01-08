@@ -1,4 +1,3 @@
-import React from "react";
 import { GIPHY_IMAGE_JPG, GIPHY_IMAGE_FULL } from "../../constant";
 
 import "./style.scss";
@@ -12,10 +11,7 @@ const LightBox = (props) => {
     const { isOpen, images, title } = props;
 
     return images && isOpen ? (
-      <div
-        className={`lightbox ${isOpen ? "show" : ""}`}
-        onClick={closeLightBox}
-      >
+      <div className={`lightbox ${isOpen && "show"}`} onClick={closeLightBox}>
         <div className="lightbox-wrapper">
           <picture className="lightbox-image">
             <source srcSet={images[GIPHY_IMAGE_FULL].url} type="image/gif" />
