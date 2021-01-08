@@ -1,12 +1,12 @@
 import loadingReducer from "./loadingReducer";
-import ImagesReducer from "./ImagesReducer";
+import imagesReducer from "./imagesReducer";
 import errorReducer from "./errorReducer";
 import offsetReducer from "./offsetReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   isLoading: loadingReducer,
-  images: ImagesReducer,
+  images: imagesReducer,
   error: errorReducer,
   offset: offsetReducer,
 });
