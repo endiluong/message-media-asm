@@ -4,7 +4,7 @@ const Header = () => {
   const renderer = () => {
     return (
       <div className="header-box">
-        <h1 className="display-5"> Giphy Images</h1>
+        <h1 className="display-5">Giphy Images</h1>
       </div>
     );
   };

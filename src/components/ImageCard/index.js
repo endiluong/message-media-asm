@@ -10,14 +10,16 @@ const ImageCard = (props) => {
   const renderer = () => {
     const { image } = props;
     const { title, images, user } = image;
+
+    const openLightBox = () => {
+      setOpenLightBox(true);
+    };
+
     return (
       <div className="col-6 col-md-4 col-lg-3">
         <section className="card">
           <div className="card-wrapper">
-            <picture
-              className="card-image"
-              onClick={() => setOpenLightBox(true)}
-            >
+            <picture className="card-image" onClick={openLightBox}>
               <source srcSet={images[GIPHY_IMAGE_WEBP].url} type="image/webp" />
               <source srcSet={images[GIPHY_IMAGE_JPG].url} type="image/jpeg" />
               <img src={images[GIPHY_IMAGE_JPG].url} alt={title} />

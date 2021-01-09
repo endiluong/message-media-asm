@@ -27,7 +27,7 @@ const ImageGrid = () => {
   };
 
   const renderImageToImageCard = () => {
-    const imageCardUIList = images.map((image) => (
+    const imageCardUIList = images?.map((image) => (
       <ImageCard image={image} key={image.id} />
     ));
     return imageCardUIList;
