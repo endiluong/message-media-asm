@@ -11,10 +11,12 @@ function* handleImagesLoad() {
     const offset = yield select(getOffSet);
 
     const images = yield call(fetchImages, offset);
-    const { data, pagination } = images;
+    if (images) {
+      const { data, pagination } = images;
 
-    yield put(setImages(data));
-    yield put(setoffSet(pagination.offset + GIPHY_DATA_OFFSET));
+      yield put(setImages(data));
+      yield put(setoffSet(pagination.offset + GIPHY_DATA_OFFSET));
+    }
   } catch (error) {
     yield put(setError(error));
   }

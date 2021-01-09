@@ -1,30 +1,18 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useCallback } from "react";
 import ImageCard from "../ImageCard";
-import { loadImages } from "../../actions";
 import debounce from "lodash/debounce";
 import "./style.scss";
 
-const ImageGrid = () => {
+const ImageGrid = (props) => {
   const [page, setPage] = useState(null);
-  const [isNextPage, setNextPage] = useState(false);
+  const { isLoading = false, images = [], error = null, onPageChange } = props;
 
-  const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.isLoading);
-
-  const images = useSelector((state) => state.images);
-  const error = useSelector((state) => state.error);
-
-  useEffect(() => {
-    dispatch(loadImages());
-  }, [dispatch, isNextPage]);
-
-  const handleScrollDown = () => {
+  const handleScrollDown = useCallback(() => {
     const { scrollHeight, scrollTop, clientHeight } = page;
     if (clientHeight + scrollTop === scrollHeight) {
-      setNextPage(true);
-    } else setNextPage(false);
-  };
+      onPageChange(true);
+    } else onPageChange(false);
+  }, [onPageChange, page]);
 
   const renderImageToImageCard = () => {
     const imageCardUIList = images?.map((image) => (
@@ -33,7 +21,7 @@ const ImageGrid = () => {
     return imageCardUIList;
   };
 
-  const renderLoader = () => <div class="progress-line"></div>;
+  const renderLoader = () => <div className="progress-line"></div>;
 
   const renderError = () => {
     return (
@@ -51,7 +39,7 @@ const ImageGrid = () => {
 
   const renderer = () => {
     return (
-      <div>
+      <>
         {error ? (
           renderError()
         ) : (
@@ -69,7 +57,7 @@ const ImageGrid = () => {
             {isLoading ? renderLoader() : null}
           </div>
         )}
-      </div>
+      </>
     );
   };
   return renderer();

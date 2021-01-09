@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import Header from "./components/Header";
-import ImageGrid from "./components/ImageGrid";
+import ImageGridContainer from "./containers/ImageGridContainer";
 import configureStore from "./store";
 import "./style.scss";
 import "./assets/scss/main.scss";
@@ -13,7 +13,7 @@ const App = () => {
       <Provider store={store}>
         <div className="app">
           <Header />
-          <ImageGrid className="grid" />
+          <ImageGridContainer className="grid" />
         </div>
       </Provider>
     );
