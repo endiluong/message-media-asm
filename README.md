@@ -24,10 +24,11 @@ You will see the application show as below pictures (Mobile, IPad and Desktop ve
 ![Mobile version](screenshots/mobile_ver.png)
 ![Ipad version](screenshots/ipad_ver.png)
 
-
 ## Running the tests
 
-Not implemented testing yet.
+```
+yarn test
+```
 
 ## Authors
 
