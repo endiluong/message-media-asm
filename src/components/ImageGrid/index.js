@@ -25,7 +25,10 @@ const ImageGrid = (props) => {
 
   const renderError = () => {
     return (
-      <div className="row d-flex flex-column justify-content-center align-items-center p-3">
+      <div
+        id="error-box"
+        className="row d-flex flex-column justify-content-center align-items-center p-3"
+      >
         <h5 className="text-danger">{error.message}</h5>
         <button
           className="btn btn-primary"
